@@ -134,18 +134,6 @@ G_loss_test3 = []
 ssim_scores3 = []
 psnr_scores3 = []
 
-## set the weights based on previously trained model
-#get_custom_objects().update({'InstanceNormalization': InstanceNormalization})
-#
-#discriminator_p = load_model('discriminator-20.h5')
-#generator_p = load_model('generator-20.h5')
-#
-#discriminator.set_weights(discriminator_p.get_weights())
-#generator.set_weights(generator_p.get_weights())
-#
-#print("======================================================================")
-#print('Loaded existing models!')
-#print("======================================================================")
 
 # ======================= Training ======================== #
 
