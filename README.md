@@ -42,6 +42,7 @@ Download the repo. Put the following numpy files to the folder with scripts - Dr
 Alternatively, you can use your own .npy files with defected and ground truth image arrays. To do that modify lines 55-62 of train_cGAN.py.
 
 a) **If you're running paired cGAN from scratch**
+
 Run
 
 ```bash
@@ -51,10 +52,15 @@ You can vary images_limit to experiment with different limited data settings. Fo
 
 Once training has started, a folder named *Microscopy_cGAN_results* will appear and training results will be saved there.
 
+
+
 b) **If you're running cGAN on dataset augmented by CIN-GAN**
+
 Run
 ```bash
 python train_cGAN.py --cin_augment=True --alpha=0.3 --cin_generator_path=/CIN-GAN/generator.h5 --batch_size=100 --num_iters=3000 --num_gpu=2 --images_limit=50
 ```
 
 Make sure you put flag --cin_augment=True and indicate a correct path to CIN-GAN generator that you want to use for defects synthesis. Flag --alpha stands for percentage of generated data that you want to add to the real data.
+
+Once training has started, a folder named *Microscopy_cGAN_results_CIN_augm* will appear and training results will be saved there.
