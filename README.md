@@ -50,7 +50,7 @@ If you are running on one gpu, then put --num_gpu=1. You can also specify a folf
 
 ### Running cGAN
 
-a) **If you're running paired cGAN from scratch**
+a) **If you're training paired cGAN from scratch**
 
 Run
 
@@ -63,7 +63,7 @@ Once training has started, a folder named *Microscopy_cGAN_results* will appear 
 
 
 
-b) **If you're running cGAN on dataset augmented by CIN-GAN**
+b) **If you're training cGAN on dataset augmented by CIN-GAN**
 
 Run
 ```bash
