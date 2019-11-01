@@ -27,7 +27,7 @@ import network_blocks
 
 FLAGS = tf.app.flags.FLAGS
 
-tf.app.flags.DEFINE_integer('image_limit', -1, """Limit .""")
+tf.app.flags.DEFINE_integer('images_limit', -1, """Limit .""")
 tf.app.flags.DEFINE_integer('batch_size', 100, """Batch size.""")
 tf.app.flags.DEFINE_integer('num_gpu', 2, """Number of available GPUs (default = 2).""")
 tf.app.flags.DEFINE_integer('num_iters', 3000, """Number of parameter updates.""")
