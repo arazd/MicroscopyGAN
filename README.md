@@ -36,12 +36,12 @@ In this work we focus on three common tasks in microscopy image restoration:
 ### Running CIN-GAN
 
 ### Running cGAN
-Download the repo.
-
-a) If you're running paired cGAN from scratch, put the following numpy files to the folder with scripts - Drosophila_X.npy, Drosophila_Y.npy, Retina_X.npy, Retina_Y.npy, Synthetic_tubulin_tubules_X.npy, Synthetic_tubulin_tubules_Y.npy. Files that end with are defected microscopy images from different sources, and corresponding files that end with are their paired high-quality images ("ground truth"). We provide a shortened version of those arrays in the data folder.
+ 
+Download the repo. Put the following numpy files to the folder with scripts - Drosophila_X.npy, Drosophila_Y.npy, Retina_X.npy, Retina_Y.npy, Synthetic_tubulin_tubules_X.npy, Synthetic_tubulin_tubules_Y.npy. Files that end with are defected microscopy images from different sources, and corresponding files that end with are their paired high-quality images ("ground truth"). We provide a shortened version of those arrays in the data folder.
 
 Alternatively, you can use your own .npy files with defected and ground truth image arrays. To do that modify lines 55-62 of train_cGAN.py.
 
+a) **If you're running paired cGAN from scratch**
 Run
 
 ```bash
@@ -50,3 +50,11 @@ python train_cGAN.py --batch_size=100 --num_iters=3000 --num_gpu=2 --images_limi
 You can vary images_limit to experiment with different limited data settings. For the paper we reported results for images_limit=10. If you are running on one gpu, then put --num_gpu=1. You can also specify a folfer where you want your results to be saved with --dir=my_save_path.
 
 Once training has started, a folder named *Microscopy_cGAN_results* will appear and training results will be saved there.
+
+b) **If you're running cGAN on dataset augmented by CIN-GAN**
+Run
+```bash
+python train_cGAN.py --cin_augment=True --alpha=0.3 --cin_generator_path=/CIN-GAN/generator.h5 --batch_size=100 --num_iters=3000 --num_gpu=2 --images_limit=50
+```
+
+Make sure you put flag --cin_augment=True and indicate a correct path to CIN-GAN generator that you want to use for defects synthesis. Flag --alpha stands for percentage of generated data that you want to add to the real data.
