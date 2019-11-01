@@ -35,7 +35,7 @@ We used baseline biological micrograph restoration datasets used in Nature Metho
 
 ## How to run
 
-Download the repo. Put the following numpy files to the folder with scripts - Drosophila_X.npy, Drosophila_Y.npy, Retina_X.npy, Retina_Y.npy, Synthetic_tubulin_tubules_X.npy, Synthetic_tubulin_tubules_Y.npy. Files that end with are defected microscopy images from different sources, and corresponding files that end with are their paired high-quality images ("ground truth"). We provide a shortened version of those arrays in the data folder.
+Download the repo. Put the following numpy files to the folder with scripts - Drosophila_X.npy, Drosophila_Y.npy, Retina_X.npy, Retina_Y.npy, Synthetic_tubulin_tubules_X.npy, Synthetic_tubulin_tubules_Y.npy. Files that end with X.npy are defected microscopy images from different sources, and corresponding files that end with Y.npy are their paired high-quality images ("ground truth"). We provide a shortened version of those arrays in the data folder.
 
 Alternatively, you can use your own .npy files with defected and ground truth image arrays. To do that modify lines 55-62 of train_cGAN.py.
 
