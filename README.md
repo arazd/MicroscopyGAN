@@ -63,7 +63,6 @@ You can vary images_limit to experiment with different limited data settings. Fo
 Once training has started, a folder named *Microscopy_cGAN_results* will appear and training results will be saved there.
 
 
-<br/>
 b) **If you're training cGAN on dataset augmented by CIN-GAN**
 
 Run
