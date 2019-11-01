@@ -31,6 +31,7 @@ In this work we focus on three common tasks in microscopy image restoration:
 * axial inpainting 
 * deep-learning-enabled super-resolution
 
+We used baseline biological micrograph restoration datasets used in Nature Methods paper <a href='https://www.nature.com/articles/s41592-018-0216-7'>"Content-aware image restoration"</a>.
 
 ## How to run
 
