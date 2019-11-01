@@ -32,10 +32,18 @@ tf.app.flags.DEFINE_integer('batch_size', 100, """Batch size.""")
 tf.app.flags.DEFINE_integer('num_gpu', 2, """Number of available GPUs (default = 2).""")
 tf.app.flags.DEFINE_integer('num_iters', 3000, """Number of parameter updates.""")
 tf.app.flags.DEFINE_string('dir', 'None', """Directory to save results.""")
+tf.app.flags.DEFINE_bool('cin_augment', 'False', """Do we use CIN-GAN to generate extra defected pairs?""")
+tf.app.flags.DEFINE_float('alpha', 0.5, """Percentage of extra generated image pairs to use.""")
+tf.app.flags.DEFINE_string('cin_generator_path', "Path to load CIN-GAN generator.")
+
+
 images_limit = FLAGS.images_limit
 batch_size = FLAGS.batch_size
 num_gpu = FLAGS.num_gpu
 dir = FLAGS.dir
+cin_augment=FLAGS.cin_augment
+alpha=FLAGS.alpha
+cin_generator_path=FLAGS.cin_generator_path
 
 height = 128
 width = 128
@@ -48,6 +56,11 @@ critic_updates = 1
 
 num_batches = int(X_train.shape[0] / batch_size)
 
+def get_n_fake(lim, alpha):
+    return int(lim/alpha - lim)
+
+n_fake = get_n_fake(images_limit, alpha)
+print("We're getting ", n_fake, " extra fake images")
 
 
 # ======================= Load Dataset and Normalize ======================== #
@@ -94,11 +107,33 @@ new_image_shape = (new_height, new_width, 1)
 if (dir!='None')
     os.chdir(dir)
 
-if (os.path.isdir("Microscopy_cGAN_results")==False):
-    os.mkdir("Microscopy_cGAN_results")
-os.chdir("Microscopy_cGAN_results")
+if (os.path.isdir("Microscopy_cGAN_results_CIN_augm")==False):
+    os.mkdir("Microscopy_cGAN_results_CIN_augm")
+os.chdir("Microscopy_cGAN_results_CIN_augm")
 
+c1 = K.variable([0])
+c2 = K.variable([0])
+c3 = K.variable([0])
+CIN_generator = load_model(cin_generator_path, custom_objects={'c1': c1,'c2':c2,'c3':c3})
 
+K.set_value(c1, [1])
+K.set_value(c2, [0])
+K.set_value(c3, [0])
+X1_extra = CIN_generator.predict(Y1_extra)
+
+K.set_value(c1, [0])
+K.set_value(c2, [1])
+K.set_value(c3, [0])
+X2_extra = CIN_generator.predict(Y2_extra)
+
+K.set_value(c1, [0])
+K.set_value(c2, [0])
+K.set_value(c3, [1])
+X3_extra = CIN_generator.predict(Y3_extra)
+
+X_train = np.concatenate((X1, X2, X3, X1_extra, X2_extra, X3_extra))
+Y_train = np.concatenate((Y1, Y2, Y3, Y1_extra, Y2_extra, Y3_extra))
+X_train, Y_train = unison_shuffled_copies(X_train, Y_train)
 
 
 
