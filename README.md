@@ -63,7 +63,7 @@ You can vary images_limit to experiment with different limited data settings. Fo
 Once training has started, a folder named *Microscopy_cGAN_results* will appear and training results will be saved there.
 
 
-
+<br/>
 b) **If you're training cGAN on dataset augmented by CIN-GAN**
 
 Run
@@ -74,3 +74,21 @@ python train_cGAN.py --cin_augment=True --alpha=0.3 --cin_generator_path=/CIN-GA
 Make sure you put flag --cin_augment=True and indicate a correct path to CIN-GAN generator that you want to use for defects synthesis. Flag --alpha stands for percentage of generated data that you want to add to the real data.
 
 Once training has started, a folder named *Microscopy_cGAN_results_CIN_augm* will appear and training results will be saved there.
+
+## Results
+
+We compared performance of our restoration pipeline in two settings: A) a limited amount of real
+paired images (defected + in-focus) are available; B) no real pairs are available, all defected pairs for
+cGAN training were synthetically generated. 
+
+Comparison of PSNR/SSIM scores between our cGAN restoration network with other
+models with 10 paired images (top) or no paired data (bottom):
+   
+|                  | Denoising  | Axial inpainting | Super-resolution |
+| ------------- | ------------- | ------------- | ------------- |
+| CARE  | 21.6/**0.56**  | 12.8/0.29 | 14.1/0.20  |
+| DeblurGAN  | 18.0/0.33  | 14.6/0.20  | 11.2/0.14  |
+| Ours | **22.4**/**0.56** | **17.4**/**0.38** | **14.3**/**0.22** |
+| ------------- | ------------- | ------------- | ------------- |
+| CycleGAN | 21.3/0.49 | **15.3**/0.27 | **12.7**/**0.14** |
+| Ours | **21.9**/**0.57** | 15.1/**0.32** | 8.9/0.07 |
