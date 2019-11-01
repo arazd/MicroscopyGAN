@@ -50,11 +50,6 @@ critic_updates = 1
 
 num_batches = int(X_train.shape[0] / batch_size)
 
-def get_n_fake(lim, alpha):
-    return int(lim/alpha - lim)
-
-n_fake = get_n_fake(images_limit, alpha)
-print("We're getting ", n_fake, " extra fake images")
 
 
 # ======================= Load Dataset and Normalize ======================== #
@@ -83,8 +78,6 @@ print("Loaded X3")
 # combine the training data
 X_train = np.concatenate((X1, X2, X3))
 Y_train = np.concatenate((Y1, Y2, Y3))
-
-X_train, Y_train = dataset_utils.unison_shuffled_copies(X_train, Y_train)
 
 print('Max: ', np.max(X_train))
 print('Min: ', np.min(X_train))
