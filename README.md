@@ -1,7 +1,7 @@
 # MicroscopyGAN
 Multi-defect microscopy image restoration under limited data conditions
 
-This is Keras implementation of the paper "Multi-defect microscopy image restoration under limited data conditions" (A Razdaibiedina, J Velayutham, M Modi). Rated in Top-15 NeurIPS Medical Imaging workshop papers.
+This is Keras implementation of the paper <a href='http://arxiv.org/abs/1910.14207'>"Multi-defect microscopy image restoration under limited data conditions"</a> (A Razdaibiedina, J Velayutham, M Modi). Rated in Top-15 NeurIPS Medical Imaging workshop papers.
 
 Restoration results of several microscopy defect types is shown below: <br/>
 <img src="animations/example1.gif" width="120px"/> <img src="animations/example2.gif" width="120px"/> <img src="animations/example3.gif" width="120px"/> <img src="animations/example4.gif" width="120px"/> <img src="animations/example5.gif" width="120px"/> 
