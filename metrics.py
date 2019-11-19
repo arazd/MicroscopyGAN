@@ -15,6 +15,7 @@ def calculate_ssim(X_test, Y_test):
     return score
 
 
+
 def calculate_psnr(X_test, Y_test):
     score = 0.0
     counter = 0
