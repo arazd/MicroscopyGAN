@@ -6,6 +6,8 @@ This is Keras implementation of the paper <a href='http://arxiv.org/abs/1910.142
 Restoration results of several microscopy defect types is shown below: <br/>
 <img src="animations/example1.gif" width="120px"/> <img src="animations/example2.gif" width="120px"/> <img src="animations/example3.gif" width="120px"/> <img src="animations/example4.gif" width="120px"/> <img src="animations/example5.gif" width="120px"/> 
 
+You can also take a look at our poster here: <a href='https://github.com/arazd/MicroscopyGAN/blob/master/poster.pdf'>MicroscopyGAN poster</a>.
+
 ## Architecture 
 Our pipeline consists of two GANs:
 1. unpaired CIN-GAN that learns to **generate defects from limited data**
