@@ -28,6 +28,7 @@ def normalize_split(X, Y, images_limit, eval_limit=30):
 
     return X_train, Y_train, X_test, Y_test
 
+
 # shuffle in unison
 def unison_shuffled_copies(a, b):
     assert len(a) == len(b)
