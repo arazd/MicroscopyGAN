@@ -27,6 +27,7 @@ We apply condition on the instance normalization for each defect type. GAN with 
 After the dataset is augmented by CIN-GAN, a conditional GAN is trained on paired high-resolution ground-truth images and defective images. The resulting cGAN is used to restore multiple types of microscopy defects. As a loss function for cGAN we used a combination of adversarial and content losses, where content loss measures image consistency in feature space of VGG16 model:<br/>
 <img src="illustrations/loss.png" width="200px"/>
 
+
 ## Microscopy defect types
 In this work we focus on three common tasks in microscopy image restoration: 
 * denoising 
