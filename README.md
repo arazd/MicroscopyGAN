@@ -61,7 +61,7 @@ Run
 ```bash
 python train_cGAN.py --batch_size=100 --num_iters=3000 --num_gpu=2 --images_limit=50
 ```
-You can vary images_limit to experiment with different limited data settings. For the paper we reported results for images_limit=10. 
+You can vary images_limit to experiment with different limited data settings. For the paper we reported results with images_limit=10. 
 
 Once training has started, a folder named *Microscopy_cGAN_results* will appear and training results will be saved there.
 
